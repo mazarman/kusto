@@ -1,0 +1,4 @@
+EmailEvents
+| where TimeGenerated > ago(30d)
+| where SenderFromAddress == 'SEARCHED_EMAIL'
+| order by TimeGenerated desc
