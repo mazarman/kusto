@@ -1,10 +1,12 @@
+let startDate = ago(30d);
 let riskysignins=
     AADSignInEventsBeta
-    | where Timestamp > ago(7d)
-    | where RiskLevelDuringSignIn in (50, 100)
+    | where Timestamp > startDate
+    | where AccountUpn == 'POTENTIALLY_COMPROMISED_ACCOUNT_UPN'
+    | where IPAddress == 'SUSPICIOUS_SIGN_IN_IP'
     | distinct SessionId;
 CloudAppEvents
-| where Timestamp > ago(7d)
+| where Timestamp > startDate
 | extend RawEventData = parse_json(RawEventData)
 | extend SessionId = RawEventData.SessionId
 | where isnotempty(SessionId)
