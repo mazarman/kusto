@@ -1,0 +1,4 @@
+AuditLogs
+| where ActivityDisplayName == "Add user" or ActivityDisplayName == "Delete user"
+| project TimeGenerated, ActivityDisplayName, InitiatedBy, TargetResources, IPAddress
+| order by TimeGenerated desc
