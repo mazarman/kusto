@@ -1,5 +1,6 @@
 DeviceLogonEvents
-| where TimeGenerated > ago (1d)
+| where TimeGenerated > ago (30d)
+| where AccountName contains "ACCOUNT_EMAIL"
 | where LogonType == "RemoteInteractive"
 | where ActionType == "LogonFailed"
 | summarize
