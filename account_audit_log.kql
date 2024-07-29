@@ -1,0 +1,3 @@
+AuditLogs
+| where TargetResources contains "<AccountName>"
+| order by TimeGenerated asc
