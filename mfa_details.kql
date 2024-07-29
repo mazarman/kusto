@@ -1,0 +1,4 @@
+SigninLogs
+| where UserPrincipalName == "<AccountName>"
+| project TimeGenerated, AuthenticationDetails
+| where AuthenticationDetails contains "MFA"
