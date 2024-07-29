@@ -1,0 +1,4 @@
+SecurityAlert
+| where AlertName contains "Brute force" or AlertName contains "Unusual login"
+| where Entities has "<AccountName>"
+| project TimeGenerated, AlertName, Description, Severity
