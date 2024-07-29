@@ -1,0 +1,4 @@
+AuditLogs
+| where ActivityDisplayName == "Add user" or ActivityDisplayName == "Delete user"
+| project TimeGenerated, ActivityDisplayName, IPAddress
+| extend GeoLocation = IPAddressDetails(IPAddress).Country
