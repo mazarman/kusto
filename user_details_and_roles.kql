@@ -1,0 +1,3 @@
+AuditLogs
+| where ActivityDisplayName == "Assign user to role" or ActivityDisplayName == "Add member to role"
+| project TimeGenerated, InitiatedBy, TargetResources, AssignedRoles
