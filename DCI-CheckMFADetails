@@ -1,0 +1,4 @@
+SigninLogs
+| where UserPrincipalName == "<AccountName>"
+| where AuthenticationRequirement == "MFA" and AuthenticationStatus != "Success"
+| project TimeGenerated, UserPrincipalName, IPAddress, Location, FailureReason
