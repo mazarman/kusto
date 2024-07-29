@@ -1,1 +1,5 @@
-
+AuditLogs
+| where ActivityDisplayName in ("Add user", "Delete user")
+| summarize Count=count(), MinTime=min(TimeGenerated), MaxTime=max(TimeGenerated) by TargetResources
+| project TargetResources, MinTime, MaxTime, Duration=datetime_diff('minute', MaxTime, MinTime), Count
+| where Count > 1 and Duration < 10
