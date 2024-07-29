@@ -1,0 +1,5 @@
+SigninLogs
+| where ResultType != 0
+| extend User = tostring(parse_json(TargetResources)[0].userPrincipalName)
+| where User == "<AccountName>"
+| order by TimeGenerated desc
